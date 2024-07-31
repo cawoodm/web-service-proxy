@@ -22,6 +22,11 @@ const config = {
   urls,
 };
 
+if (config.ssl && !fs.existsSync(config.ssl.key)) throw new Error(`File SSL_KEY not found at '${config.ssl.key}'`);
+else config.ssl.key = fs.readFileSync(config.ssl.key, 'utf8');
+if (config.ssl && !fs.existsSync(config.ssl.certificate)) throw new Error(`File SSL_CERTIFICATE not found at '${config.ssl.certificate}'`);
+else config.ssl.certificate = fs.readFileSync(config.ssl.certificate, 'utf8')
+
 if (!fs.existsSync(config.servicesPath)) throw new Error(`Directory SERVICES_PATH not found at '${config.servicesPath}'!`);
 
 module.exports = config;

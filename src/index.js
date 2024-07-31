@@ -4,9 +4,6 @@ const express = require('express');
 
 require('dotenv').config()
 
-const fs = require('fs');
-const PATH = require('path');
-
 const config = require('./config.js');
 console.debug(config)
 
@@ -24,12 +21,9 @@ config.port && app.listen(config.port, () => {
 });
 
 if (config.ssl?.port) {
-  const fs = require('fs');
-  if (!fs.existsSync(config.ssl.key)) throw new Error(`File SSL_KEY not found at '${config.ssl.key}'`);
-  if (!fs.existsSync(config.ssl.certificate)) throw new Error(`File SSL_CERTIFICATE not found at '${config.ssl.certificate}'`);
   const credentials = {
-    key: fs.readFileSync(config.ssl.key, 'utf8'),
-    cert: fs.readFileSync(config.ssl.certificate, 'utf8')
+    key: config.ssl.key,
+    cert: config.ssl.certificate,
   };
   const https = require('https');
   httpsServer = https.createServer(credentials, app);
@@ -41,8 +35,9 @@ if (config.ssl?.port) {
 
 let routesLoaded=false;
 function loadRoutes() {
+  const path = require('path');
   if (routesLoaded) return;
   app.use('/proxy', require('./routes/proxy'));
-  app.use('/', express.static(PATH.join(__dirname, '/html'), {}));
+  app.use('/', express.static(path.join(__dirname, '/html'), {}));
   routesLoaded = true;
 }
