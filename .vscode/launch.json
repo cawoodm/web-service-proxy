@@ -1,0 +1,23 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "DEBUG",
+      "env": {
+        "PROXY_SVC1": "https://postman-echo.com",
+        "HTTPS_PORT": "8443",
+        "SSL_KEY": "ssl.key",
+        "SSL_CERTIFICATE": "ssl.crt",
+      },
+      "type": "node",
+      "request": "launch",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "program": "${workspaceFolder}\\src\\index.js",
+    }
+  ]
+}
