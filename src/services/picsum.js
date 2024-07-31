@@ -15,6 +15,11 @@ router.use('/', proxy(process.env.PROXY_SVC1_URL, {
     url = req.path; // Remove querystring parameters or whatever...
     return url;
   },
+  userResDecorator: function(proxyRes, proxyResData, userReq, userRes) {
+    data = JSON.parse(proxyResData.toString('utf8'));
+    data.newProperty = 'exciting data';
+    return JSON.stringify(data);
+  },
   filter: function(req, res) {
     const APIKeyRequired = process.env.PROXY_SVC1_API_KEY_REQUIRED;
     if (APIKeyRequired && req.header('x-api-key') !== APIKeyRequired) return false;

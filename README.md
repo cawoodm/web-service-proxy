@@ -33,3 +33,6 @@ The following environment variables can be configured:
   * `PROXY_SVC_PICSUM_API_KEY_REQUIRED`: Example of an API Key required for requests to this `/proxy/picsum` service. Must be supplied in `x-api-key` header. Default empty means header must be empty or not present.
 * `PROXY_URL_ANYTHING`: Proxy `/proxy/anything/` to any URL defined in `PROXY_URL_ANYTHING`
 * `PROXY_URL_ANYTHING_ELSE`: Proxy `/proxy/anything/else/` to any URL defined in `PROXY_URL_ANYTHING_ELSE` etc...
+
+## Troubleshooting
+* Set `DEBUG=express-http-proxy` to enable detailed logs

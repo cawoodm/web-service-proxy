@@ -12,18 +12,16 @@ console.debug(config)
 
 const app = express();
 
-app.use(express.json());
+// app.use(express.json());
 
 app.use('/ping', (req, res) => {
   res.send(`OK: ${new Date().toLocaleString()}`);
 });
 
-if (config.port) {
-  app.listen(config.port, () => {
-    console.log(`Proxy Service ready http://127.0.0.1:${config.port}/`)
-    loadRoutes();
-  });
-}
+config.port && app.listen(config.port, () => {
+  console.log(`Proxy Service ready http://127.0.0.1:${config.port}/`)
+  loadRoutes();
+});
 
 if (config.ssl?.port) {
   const fs = require('fs');
