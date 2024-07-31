@@ -19,7 +19,7 @@ app.use('/ping', (req, res) => {
 });
 
 config.port && app.listen(config.port, () => {
-  console.log(`Proxy Service ready http://127.0.0.1:${config.port}/`)
+  console.log(`Proxy Service (PID ${process.pid}) ready http://127.0.0.1:${config.port}/`)
   loadRoutes();
 });
 
@@ -34,7 +34,7 @@ if (config.ssl?.port) {
   const https = require('https');
   httpsServer = https.createServer(credentials, app);
   httpsServer.listen(config.ssl.port, () => {
-    console.log(`Proxy Service ready https://127.0.0.1:${config.ssl.port}/`)
+    console.log(`Proxy Service (PID ${process.pid}) ready https://127.0.0.1:${config.ssl.port}/`)
     loadRoutes();
   });
 }
@@ -43,9 +43,6 @@ let routesLoaded=false;
 function loadRoutes() {
   if (routesLoaded) return;
   app.use('/proxy', require('./routes/proxy'));
-  app.use('/', (req, res) => {
-    const indexHTML = fs.readFileSync(PATH.join(__dirname, './html/index.html')).toString();
-    res.send(indexHTML);
-  });
+  app.use('/', express.static(PATH.join(__dirname, '/html'), {}));
   routesLoaded = true;
 }
