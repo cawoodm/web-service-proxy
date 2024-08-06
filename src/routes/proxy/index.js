@@ -32,9 +32,16 @@ if (Object.keys(config.urls).length) {
     console.log(` * Proxy (${path}) to ${baseUrl}`)
     router.use(path, proxy(baseUrl, {
       proxyReqPathResolver: function (req) {
-        console.log("[PROXY]", name, req.method, req.url);
+        console.log("[PROXY]", "[REQ]", name, req.method, req.url);
+        console.log("[PROXY]", "[REQ:HEADERS]", name, req.headers);
         return req.url;
-      }
+      },
+      userResDecorator: function(proxyRes, proxyResData, userReq, userRes) {
+        console.log("[PROXY]", "[RES]", name, userRes.statusCode);
+        console.log("[PROXY]", "[RES:HEADERS]", name, proxyRes.headers);
+        console.log("[PROXY]", "[RES:DATA]", name, proxyResData.toString());
+        return proxyResData;
+      },
     }));
   });
 } else {
