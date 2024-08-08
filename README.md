@@ -28,6 +28,7 @@ The following environment variables can be configured:
 * `HTTPS_PORT`: The port on which this service listens (no default). If set also provide:
   * `SSL_KEY`: Full path to private `.key` file for HTTPS (e.g. /home/me/ssl.key)
   * `SSL_CERTIFICATE`: Full paath to public `.crt` or `.pem` file for HTTPS (e.g. /home/me/ssl.crt)
+* `STATIC_PATH`: Path to static responses on /static path (default ./src/html/static/)
 * `SERVICES_PATH`: Path to custom services (default ./src/services/)
   * `PROXY_SVC_PICSUM`: Example proxy to https://picsum.photos/
   * `PROXY_SVC_PICSUM_API_KEY_REQUIRED`: Example of an API Key required for requests to this `/proxy/picsum` service. Must be supplied in `x-api-key` header. Default empty means header must be empty or not present.

@@ -18,6 +18,7 @@
       "env": {
         "HTTPS_PORT": "8443",
         "SSL_KEY": "ssl.key",
+        "DEBUG": "true",
         "SSL_CERTIFICATE": "ssl.crt",
       },
       "type": "node",

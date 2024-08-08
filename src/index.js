@@ -37,10 +37,13 @@ function loadRoutes() {
   const path = require('path');
   if (routesLoaded) return;
   app.use('/proxy', require('./routes/proxy'));
-  app.use('/', function(req, res, next) {
-    req.method = 'GET';
-    next();
-  });
+  if (config.staticPath) {
+    app.use('/static', function(req, res, next) {
+      req.method = 'GET';
+      next();
+    });
+    app.use('/static', express.static(config.staticPath, {}));
+  }
   app.use('/', express.static(path.join(__dirname, '/html'), {}));
   routesLoaded = true;
 }

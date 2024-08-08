@@ -20,6 +20,7 @@ const config = {
   } : undefined,
   port: process.env.HTTP_PORT || '8080',
   servicesPath: process.env.SERVICES_PATH || './src/services/',
+  staticPath: process.env.STATIC_PATH || './src/html/static/',
   services,
   urls,
 };
@@ -30,5 +31,6 @@ if (config.ssl && !fs.existsSync(config.ssl.certificate)) throw new Error(`File 
 else config.ssl.certificate = fs.readFileSync(config.ssl.certificate, 'utf8');
 
 if (!fs.existsSync(config.servicesPath)) throw new Error(`Directory SERVICES_PATH not found at '${config.servicesPath}'!`);
+if (!fs.existsSync(config.staticPath)) throw new Error(`Directory STATIC_PATH not found at '${config.staticPath}'!`);
 
 module.exports = config;
