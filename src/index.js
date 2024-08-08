@@ -8,7 +8,7 @@ const config = require('./config.js');
 process.env.DEBUG && console.debug(config);
 
 const app = express();
-app.use(require('body-parser').raw({type: 'text/xml'}));
+// Don't even try usingg 'body-parser' here or things break!!
 
 app.use('/ping', (req, res) => {
   res.send(`OK: ${new Date().toLocaleString()}`);
