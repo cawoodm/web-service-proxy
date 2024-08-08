@@ -1,0 +1,30 @@
+{
+  "extends": "strongloop",
+  "env": {
+    "es6": true,
+    "jest": true,
+    "node": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 2020
+  },
+  "rules": {
+    "max-len": "off",
+    "quotes": [
+      "error",
+      "single"
+    ],
+    "object-curly-spacing": [
+      "error",
+      "never"
+    ],
+    "quote-props": "off",
+    "block-spacing": "off",
+    "space-before-function-paren": "off",
+    "complexity": [
+      "warn",
+      10
+    ],
+    "require-await": "error"
+  }
+}

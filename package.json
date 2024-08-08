@@ -11,8 +11,16 @@
   "author": "Marc Cawood",
   "license": "MIT",
   "dependencies": {
+    "body-parser": "^1.20.2",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
-    "express-http-proxy": "^2.0.0"
+    "express-http-proxy": "^2.0.0",
+    "simple-xml-to-json": "^1.2.2"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.1.0",
+    "@eslint/js": "^9.8.0",
+    "eslint-config-strongloop": "^2.1.0",
+    "globals": "^15.9.0"
   }
 }
