@@ -5,9 +5,17 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "Launch Program",
+      "program": "${workspaceFolder}/tmpTest.js",
+      "request": "launch",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "type": "node"
+    },
+    {
       "name": "DEBUG",
       "env": {
-        "PROXY_SVC1": "https://postman-echo.com",
         "HTTPS_PORT": "8443",
         "SSL_KEY": "ssl.key",
         "SSL_CERTIFICATE": "ssl.crt",
@@ -18,6 +26,8 @@
         "<node_internals>/**"
       ],
       "program": "${workspaceFolder}\\src\\index.js",
+      "restart": true,
+      "runtimeExecutable": "nodemon"
     }
   ]
 }
