@@ -1,9 +1,10 @@
-<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" soap:encodingStyle="http://www.w3.org/2003/05/soap-encoding">
-
-  <soap:Body xmlns:m="http://www.example.org/stock">
-    <m:GetStockPriceResponse>
-      <m:Price>34.5</m:Price>
-    </m:GetStockPriceResponse>
-  </soap:Body>
-
-</soap:Envelope>
+<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
+  <s:Body>
+    <ChangePasswordResponse xmlns="urn:foo.com/v1">
+      <ChangePasswordResult xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+        <Message>Error!</Message>
+        <Status>false</Status>
+      </ChangePasswordResult>
+    </ChangePasswordResponse>
+  </s:Body>
+</s:Envelope>

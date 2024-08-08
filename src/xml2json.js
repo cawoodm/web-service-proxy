@@ -13,9 +13,16 @@ function simplifyJson(obj) {
     });
     return result;
   } else {
-    let firstProp = Object.keys(obj[firstProperty])[0].match(/(.+:)?(.+)/)[2];
+    let firstProp = Object.keys(obj[firstProperty]).filter(skipKeys)[0].match(/(.+:)?(.+)/)[2];
+    if (firstProp === 'nil') return null;
+    if (obj[firstProperty][firstProp] === 'true') return true;
+    if (obj[firstProperty][firstProp] === 'false') return false;
     return obj[firstProperty][firstProp];
   }
+}
+
+function skipKeys(k) {
+  return !['xml:lang'].includes(k);
 }
 
 module.exports = {
