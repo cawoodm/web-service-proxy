@@ -40,6 +40,13 @@ function loadRoutes() {
   if (config.staticPath) {
     app.use('/static', function(req, res, next) {
       req.method = 'GET';
+      if (process.env.LOG_REQUEST) {
+        console.log('[PROXY]', '[REQ]', 'STATIC', req.method, req.url);
+        console.log('-------------------------------REQ.HEADERS-----------------------------------------');
+        console.log(req.headers);
+        console.log('-------------------------------REQ.BODY-----------------------------------------');
+        console.log(req.body?.toString());
+      }
       next();
     });
     app.use('/static', express.static(config.staticPath, {}));
